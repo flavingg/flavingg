@@ -1,0 +1,54 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Carro 2D</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let carX = 50;
+    let carY = canvas.height/2;
+    let carWidth = 50;
+    let carHeight = 30;
+
+    function drawCar() {
+      ctx.fillStyle = 'red';
+      ctx.fillRect(carX, carY, carWidth, carHeight);
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function updateGame() {
+      clearCanvas();
+      drawCar();
+
+      requestAnimationFrame(updateGame);
+    }
+
+    updateGame();
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowRight') {
+        carX += 5;
+      } else if (event.key === 'ArrowLeft') {
+        carX -= 5;
+      }
+    });
+  </script>
+</body>
+</html>
