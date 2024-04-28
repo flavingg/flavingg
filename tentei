@@ -1,0 +1,35 @@
+
+```javascript
+// Definindo as variáveis
+let car = document.getElementById("car");
+let road = document.getElementById("road");
+let roadWidth = road.offsetWidth;
+let carPosition = roadWidth / 2;
+
+// Movendo o carro para a posição inicial
+car.style.left = carPosition + "px";
+
+// Função para mover o carro para a esquerda
+function moveLeft() {
+  if (carPosition - 50 >= 0) {
+    carPosition -= 50;
+    car.style.left = carPosition + "px";
+  }
+}
+
+// Função para mover o carro para a direita
+function moveRight() {
+  if (carPosition + 50 <= roadWidth - 50) {
+    carPosition += 50;
+    car.style.left = carPosition + "px";
+  }
+}
+
+// Event listeners para detectar as teclas pressionadas
+document.addEventListener("keydown", function(event) {
+  if (event.key === "ArrowLeft") {
+    moveLeft();
+  } else if (event.key === "ArrowRight") {
+    moveRight();
+  }
+}){
